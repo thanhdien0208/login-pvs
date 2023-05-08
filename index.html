@@ -246,12 +246,16 @@
       /* For small devices */
 
       @media only screen and (max-width: 480px) {
+        #wrapper {
+          overflow: hidden;
+        }
         .login__content {
           margin-left: 2rem;
         }
         .login__form {
           margin-left: 0;
           margin-top: 5rem;
+          background-color: rgba(255, 255, 255, 0.3);
         }
         .login__buttons {
           flex-direction: column;
