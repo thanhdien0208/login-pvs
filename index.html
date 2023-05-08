@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <style>
+      /*=============== GOOGLE FONTS ===============*/
+
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+      /*=============== VARIABLES CSS ===============*/
+
+      :root {
+        /*========== Colors ==========*/
+        /*Color mode HSL(hue, saturation, lightness)*/
+        --first-color: #efc508;
+        --second-color: #866f07;
+        --title-color: rgba(255, 255, 255, 0.9);
+        --text-color: rgba(255, 255, 255, 0.7);
+        --body-color: #0e0133;
+        /*========== Font and typography ==========*/
+        /*.5rem = 8px | 1rem = 16px ...*/
+        --body-font: "Montserrat", sans-serif;
+        --h2-font-size: 1.25rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+        /*========== Font weight ==========*/
+        --font-medium: 500;
+        --font-semi-bold: 600;
+      }
+      /* Responsive typography */
+
+      @media screen and (min-width: 1024px) {
+        :root {
+          --h2-font-size: 1.75rem;
+          --normal-font-size: 1rem;
+          --small-font-size: 0.875rem;
+          --smaller-font-size: 0.813rem;
+        }
+      }
+      /*=============== BASE ===============*/
+
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font-family: var(--body-font);
+        color: var(--text-color);
+      }
+
+      input,
+      button {
+        font-family: var(--body-font);
+        border: none;
+        outline: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      #wrapper {
+        height: 100vh;
+        background-image: url("./img/pvs-bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+      }
+      /*=============== LOGIN FORM ===============*/
+
+      .login__form,
+      .login__inputs {
+        display: grid;
+      }
+
+      .login__content {
+        display: inline-block;
+        margin-top: 8rem;
+        margin-left: 5rem;
+      }
+
+      .login__form {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        margin-inline: 1.5rem;
+        row-gap: 1.25rem;
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-radius: 1rem;
+        width: 400px;
+        height: 500px;
+      }
+
+      .login__logo-box {
+        width: 100%;
+        text-align: center;
+      }
+
+      .login__logo {
+        width: 120px;
+        object-fit: cover;
+      }
+
+      .login__title {
+        color: var(--title-color);
+        font-size: var(--h2-font-size);
+        margin-bottom: 0.5rem;
+      }
+
+      .login__title span {
+        color: var(--first-color);
+      }
+
+      .login__description {
+        margin-top: 0.5rem;
+        font-size: var(--small-font-size);
+      }
+
+      .login__inputs {
+        row-gap: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .login__label {
+        display: block;
+        color: var(--title-color);
+        font-size: var(--small-font-size);
+        font-weight: var(--font-semi-bold);
+        margin-bottom: 0.25rem;
+      }
+
+      .login__input {
+        width: 100%;
+        padding: 14px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--text-color);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--title-color);
+        font-size: var(--smaller-font-size);
+        font-weight: var(--font-medium);
+        transition: border 0.4s;
+      }
+
+      .login__input::placeholder {
+        color: var(--text-color);
+      }
+
+      .login__input:focus,
+      .login__input:valid {
+        border: 1px solid var(--first-color);
+      }
+
+      .login__box {
+        position: relative;
+      }
+
+      .login__box .login__input {
+        padding-right: 36px;
+      }
+
+      .login__eye {
+        width: max-content;
+        height: max-content;
+        position: absolute;
+        right: 0.75rem;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+
+      .login__buttons {
+        display: flex;
+        column-gap: 0.75rem;
+      }
+
+      .login__button {
+        width: 100%;
+        padding: 14px 2rem;
+        border-radius: 6px;
+        background: linear-gradient(
+          180deg,
+          var(--first-color),
+          var(--second-color)
+        );
+        color: #fff;
+        font-size: var(--small-font-size);
+        font-weight: var(--font-semi-bold);
+        /* box-shadow: 0 3px 14px rgba(255, 255, 255, 0.5); */
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+
+      .login__action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .login__forgot,
+      .login__lostactive {
+        font-size: var(--smaller-font-size);
+        color: var(--first-color);
+        text-decoration: none;
+      }
+      /*=============== BREAKPOINTS ===============*/
+      /* For large devices */
+
+      @media only screen and (max-width: 1024px) {
+        .login__form {
+          justify-self: flex-end;
+          margin-left: 0;
+        }
+      }
+      /* For medium devices */
+
+      @media only screen and (max-width: 768px) {
+        .login__content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 2rem;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+        .login__form {
+          width: 350px;
+          margin-left: 2rem;
+          margin-top: 10rem;
+        }
+      }
+      /* For small devices */
+
+      @media only screen and (max-width: 480px) {
+        .login__content {
+          margin-left: 2rem;
+        }
+        .login__form {
+          margin-left: 0;
+          margin-top: 5rem;
+        }
+        .login__buttons {
+          flex-direction: column;
+        }
+        .login__forgot,
+        .login__lostactive {
+          font-size: 0.6rem;
+        }
+        .login__description {
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="wrapper">
+    <div class="container">
+      <div class="login__content">
+        <form action="" class="login__form">
+          <div>
+            <div class="login__logo-box">
+              <img class="login__logo" src="./img/logo-pvs.png" alt="logo" />
+              <p class="login__description">
+                Welcome! Please login to continue.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div class="login__inputs">
+              <div>
+                <label for="" class="login__label">Email*</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                  class="login__input"
+                />
+              </div>
+
+              <div>
+                <label for="" class="login__label">Password*</label>
+
+                <div class="login__box">
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                    class="login__input"
+                    id="input-pass"
+                  />
+                  <i class="ri-eye-off-line login__eye" id="input-icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="login__buttons">
+              <button class="login__button">Log In</button>
+            </div>
+
+            <div class="login__action">
+              <a href="#" class="login__forgot">Forgot Password?</a>
+              <a href="#" class="login__lostactive">Lost Activation E-Mail?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+      /*=============== SHOW HIDDEN - PASSWORD ===============*/
+      const showHiddenPass = (inputPass, inputIcon) => {
+        const input = document.getElementById(inputPass),
+          iconEye = document.getElementById(inputIcon);
+
+        iconEye.addEventListener("click", () => {
+          // Change password to text
+          if (input.type === "password") {
+            // Switch to text
+            input.type = "text";
+
+            // Add icon
+            iconEye.classList.add("ri-eye-line");
+            // Remove icon
+            iconEye.classList.remove("ri-eye-off-line");
+          } else {
+            // Change to password
+            input.type = "password";
+
+            // Remove icon
+            iconEye.classList.remove("ri-eye-line");
+            // Add icon
+            iconEye.classList.add("ri-eye-off-line");
+          }
+        });
+      };
+
+      showHiddenPass("input-pass", "input-icon");
+    </script>
+  </body>
+</html>
